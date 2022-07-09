@@ -98,14 +98,32 @@ export function customColor(source, color) {
  * @param options Options
  */
 export function applyTheme(theme, options) {
-    var _a;
+    var _a, _b;
     const target = (options === null || options === void 0 ? void 0 : options.target) || document.body;
     const isDark = (_a = options === null || options === void 0 ? void 0 : options.dark) !== null && _a !== void 0 ? _a : false;
     const scheme = isDark ? theme.schemes.dark : theme.schemes.light;
+    setSchemeProperties(target, scheme);
+    if (options === null || options === void 0 ? void 0 : options.brightnessSuffix) {
+        setSchemeProperties(target, theme.schemes.dark, '-dark');
+        setSchemeProperties(target, theme.schemes.light, '-light');
+    }
+    if (options === null || options === void 0 ? void 0 : options.paletteTones) {
+        const tones = (_b = options === null || options === void 0 ? void 0 : options.paletteTones) !== null && _b !== void 0 ? _b : [];
+        for (const [key, palette] of Object.entries(theme.palettes)) {
+            const paletteKey = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+            for (const tone of tones) {
+                const token = `--md-ref-palette-${paletteKey}-${paletteKey}${tone}`;
+                const color = hexFromArgb(palette.tone(tone));
+                target.style.setProperty(token, color);
+            }
+        }
+    }
+}
+function setSchemeProperties(target, scheme, suffix = '') {
     for (const [key, value] of Object.entries(scheme.toJSON())) {
-        const token = key.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+        const token = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
         const color = hexFromArgb(value);
-        target.style.setProperty(`--md-sys-color-${token}`, color);
+        target.style.setProperty(`--md-sys-color-${token}${suffix}`, color);
     }
 }
 //# sourceMappingURL=theme_utils.js.map

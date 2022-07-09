@@ -14,18 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { CorePalette } from '../palettes/core_palette';
 /**
  * Represents a Material color scheme, a mapping of color roles to colors.
  */
 export declare class Scheme {
     private readonly props;
     get primary(): number;
-    get primaryContainer(): number;
     get onPrimary(): number;
+    get primaryContainer(): number;
     get onPrimaryContainer(): number;
     get secondary(): number;
-    get secondaryContainer(): number;
     get onSecondary(): number;
+    get secondaryContainer(): number;
     get onSecondaryContainer(): number;
     get tertiary(): number;
     get onTertiary(): number;
@@ -56,23 +57,41 @@ export declare class Scheme {
      * @return Dark Material color scheme, based on the color's hue.
      */
     static dark(argb: number): Scheme;
+    /**
+     * @param argb ARGB representation of a color.
+     * @return Light Material content color scheme, based on the color's hue.
+     */
+    static lightContent(argb: number): Scheme;
+    /**
+     * @param argb ARGB representation of a color.
+     * @return Dark Material content color scheme, based on the color's hue.
+     */
+    static darkContent(argb: number): Scheme;
+    /**
+     * Light scheme from core palette
+     */
+    static lightFromCorePalette(core: CorePalette): Scheme;
+    /**
+     * Dark scheme from core palette
+     */
+    static darkFromCorePalette(core: CorePalette): Scheme;
     private constructor();
     toJSON(): {
         primary: number;
-        primaryContainer: number;
         onPrimary: number;
+        primaryContainer: number;
         onPrimaryContainer: number;
         secondary: number;
-        secondaryContainer: number;
         onSecondary: number;
+        secondaryContainer: number;
         onSecondaryContainer: number;
         tertiary: number;
-        tertiaryContainer: number;
         onTertiary: number;
+        tertiaryContainer: number;
         onTertiaryContainer: number;
         error: number;
-        errorContainer: number;
         onError: number;
+        errorContainer: number;
         onErrorContainer: number;
         background: number;
         onBackground: number;

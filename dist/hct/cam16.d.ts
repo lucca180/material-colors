@@ -32,7 +32,7 @@ import { ViewingConditions } from './viewing_conditions';
  * point is accurately measured as a slightly chromatic blue by CAM16. (roughly,
  * hue 203, chroma 3, lightness 100)
  */
-export declare class CAM16 {
+export declare class Cam16 {
     readonly hue: number;
     readonly chroma: number;
     readonly j: number;
@@ -68,26 +68,26 @@ export declare class CAM16 {
      * a*, b*, or jstar, astar, bstar in code. CAM16-UCS is included in the CAM16
      * specification, and is used to measure distances between colors.
      */
-    distance(other: CAM16): number;
+    distance(other: Cam16): number;
     /**
      * @param argb ARGB representation of a color.
      * @return CAM16 color, assuming the color was viewed in default viewing
      *     conditions.
      */
-    static fromInt(argb: number): CAM16;
+    static fromInt(argb: number): Cam16;
     /**
      * @param argb ARGB representation of a color.
      * @param viewingConditions Information about the environment where the color
      *     was observed.
      * @return CAM16 color.
      */
-    static fromIntInViewingConditions(argb: number, viewingConditions: ViewingConditions): CAM16;
+    static fromIntInViewingConditions(argb: number, viewingConditions: ViewingConditions): Cam16;
     /**
      * @param j CAM16 lightness
      * @param c CAM16 chroma
      * @param h CAM16 hue
      */
-    static fromJch(j: number, c: number, h: number): CAM16;
+    static fromJch(j: number, c: number, h: number): Cam16;
     /**
      * @param j CAM16 lightness
      * @param c CAM16 chroma
@@ -95,7 +95,7 @@ export declare class CAM16 {
      * @param viewingConditions Information about the environment where the color
      *     was observed.
      */
-    static fromJchInViewingConditions(j: number, c: number, h: number, viewingConditions: ViewingConditions): CAM16;
+    static fromJchInViewingConditions(j: number, c: number, h: number, viewingConditions: ViewingConditions): Cam16;
     /**
      * @param jstar CAM16-UCS lightness.
      * @param astar CAM16-UCS a dimension. Like a* in L*a*b*, it is a Cartesian
@@ -103,7 +103,7 @@ export declare class CAM16 {
      * @param bstar CAM16-UCS b dimension. Like a* in L*a*b*, it is a Cartesian
      *     coordinate on the X axis.
      */
-    static fromUcs(jstar: number, astar: number, bstar: number): CAM16;
+    static fromUcs(jstar: number, astar: number, bstar: number): Cam16;
     /**
      * @param jstar CAM16-UCS lightness.
      * @param astar CAM16-UCS a dimension. Like a* in L*a*b*, it is a Cartesian
@@ -113,13 +113,13 @@ export declare class CAM16 {
      * @param viewingConditions Information about the environment where the color
      *     was observed.
      */
-    static fromUcsInViewingConditions(jstar: number, astar: number, bstar: number, viewingConditions: ViewingConditions): CAM16;
+    static fromUcsInViewingConditions(jstar: number, astar: number, bstar: number, viewingConditions: ViewingConditions): Cam16;
     /**
      *  @return ARGB representation of color, assuming the color was viewed in
      *     default viewing conditions, which are near-identical to the default
      *     viewing conditions for sRGB.
      */
-    viewedInSrgb(): number;
+    toInt(): number;
     /**
      * @param viewingConditions Information about the environment where the color
      *     will be viewed.

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { HCT } from '../hct/hct';
+import { Hct } from '../hct/hct';
 import { TonalPalette } from './tonal_palette';
 /**
  * An intermediate concept between the key color for a UI theme, and a full
@@ -22,21 +22,37 @@ import { TonalPalette } from './tonal_palette';
  * as the key color, and all vary in chroma.
  */
 export class CorePalette {
-    constructor(argb) {
-        const hct = HCT.fromInt(argb);
+    constructor(argb, isContent) {
+        const hct = Hct.fromInt(argb);
         const hue = hct.hue;
-        this.a1 = TonalPalette.fromHueAndChroma(hue, Math.max(48, hct.chroma));
-        this.a2 = TonalPalette.fromHueAndChroma(hue, 16);
-        this.a3 = TonalPalette.fromHueAndChroma(hue + 60, 24);
-        this.n1 = TonalPalette.fromHueAndChroma(hue, 4);
-        this.n2 = TonalPalette.fromHueAndChroma(hue, 8);
+        const chroma = hct.chroma;
+        if (isContent) {
+            this.a1 = TonalPalette.fromHueAndChroma(hue, chroma);
+            this.a2 = TonalPalette.fromHueAndChroma(hue, chroma / 3);
+            this.a3 = TonalPalette.fromHueAndChroma(hue + 60, chroma / 2);
+            this.n1 = TonalPalette.fromHueAndChroma(hue, Math.min(chroma / 12, 4));
+            this.n2 = TonalPalette.fromHueAndChroma(hue, Math.min(chroma / 6, 8));
+        }
+        else {
+            this.a1 = TonalPalette.fromHueAndChroma(hue, Math.max(48, chroma));
+            this.a2 = TonalPalette.fromHueAndChroma(hue, 16);
+            this.a3 = TonalPalette.fromHueAndChroma(hue + 60, 24);
+            this.n1 = TonalPalette.fromHueAndChroma(hue, 4);
+            this.n2 = TonalPalette.fromHueAndChroma(hue, 8);
+        }
         this.error = TonalPalette.fromHueAndChroma(25, 84);
     }
     /**
      * @param argb ARGB representation of a color
      */
     static of(argb) {
-        return new CorePalette(argb);
+        return new CorePalette(argb, false);
+    }
+    /**
+     * @param argb ARGB representation of a color
+     */
+    static contentOf(argb) {
+        return new CorePalette(argb, true);
     }
 }
 //# sourceMappingURL=core_palette.js.map

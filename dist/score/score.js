@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { CAM16 } from '../hct/cam16';
+import { Cam16 } from '../hct/cam16';
 import * as utils from '../utils/color_utils';
 import * as math from '../utils/math_utils';
 /**
@@ -39,7 +39,7 @@ export class Score {
      *     were not suitable for a theme, a default fallback color will be
      *     provided, Google Blue.
      */
-    static score(colorsToPopulation) {
+    static score(colorsToPopulation, contentColor = false) {
         // Determine the total count of all colors.
         let populationSum = 0;
         for (const population of colorsToPopulation.values()) {
@@ -54,7 +54,7 @@ export class Score {
         for (const [color, population] of colorsToPopulation.entries()) {
             const proportion = population / populationSum;
             colorsToProportion.set(color, proportion);
-            const cam = CAM16.fromInt(color);
+            const cam = Cam16.fromInt(color);
             colorsToCam.set(color, cam);
             const hue = Math.round(cam.hue);
             hueProportions[hue] += proportion;
@@ -85,7 +85,9 @@ export class Score {
         }
         // Remove colors that are unsuitable, ex. very dark or unchromatic colors.
         // Also, remove colors that are very similar in hue.
-        const filteredColors = Score.filter(colorsToExcitedProportion, colorsToCam);
+        const filteredColors = contentColor ?
+            Score.filterContent(colorsToCam) :
+            Score.filter(colorsToExcitedProportion, colorsToCam);
         const dedupedColorsToScore = new Map();
         for (const color of filteredColors) {
             let duplicateHue = false;
@@ -128,6 +130,9 @@ export class Score {
             }
         }
         return filtered;
+    }
+    static filterContent(colorsToCam) {
+        return Array.from(colorsToCam.keys());
     }
 }
 Score.TARGET_CHROMA = 48.0;

@@ -19,10 +19,8 @@
  * accurate color measurement system that can also accurately render what colors
  * will appear as in different lighting environments.
  */
-export declare class HCT {
-    private internalHue;
-    private internalChroma;
-    private internalTone;
+export declare class Hct {
+    private argb;
     /**
      * @param hue 0 <= hue < 360; invalid values are corrected.
      * @param chroma 0 <= chroma < ?; Informally, colorfulness. The color
@@ -31,12 +29,15 @@ export declare class HCT {
      * @param tone 0 <= tone <= 100; invalid values are corrected.
      * @return HCT representation of a color in default viewing conditions.
      */
-    static from(hue: number, chroma: number, tone: number): HCT;
+    internalHue: number;
+    internalChroma: number;
+    internalTone: number;
+    static from(hue: number, chroma: number, tone: number): Hct;
     /**
      * @param argb ARGB representation of a color.
      * @return HCT representation of a color in default viewing conditions
      */
-    static fromInt(argb: number): HCT;
+    static fromInt(argb: number): Hct;
     toInt(): number;
     /**
      * A number, in degrees, representing ex. red, orange, yellow, etc.

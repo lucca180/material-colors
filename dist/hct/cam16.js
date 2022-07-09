@@ -34,7 +34,7 @@ import { ViewingConditions } from './viewing_conditions';
  * point is accurately measured as a slightly chromatic blue by CAM16. (roughly,
  * hue 203, chroma 3, lightness 100)
  */
-export class CAM16 {
+export class Cam16 {
     /**
      * All of the CAM16 dimensions can be calculated from 3 of the dimensions, in
      * the following combinations:
@@ -85,7 +85,7 @@ export class CAM16 {
      *     conditions.
      */
     static fromInt(argb) {
-        return CAM16.fromIntInViewingConditions(argb, ViewingConditions.DEFAULT);
+        return Cam16.fromIntInViewingConditions(argb, ViewingConditions.DEFAULT);
     }
     /**
      * @param argb ARGB representation of a color.
@@ -144,7 +144,7 @@ export class CAM16 {
         const mstar = (1.0 / 0.0228) * Math.log(1.0 + 0.0228 * m);
         const astar = mstar * Math.cos(hueRadians);
         const bstar = mstar * Math.sin(hueRadians);
-        return new CAM16(hue, c, j, q, m, s, jstar, astar, bstar);
+        return new Cam16(hue, c, j, q, m, s, jstar, astar, bstar);
     }
     /**
      * @param j CAM16 lightness
@@ -152,7 +152,7 @@ export class CAM16 {
      * @param h CAM16 hue
      */
     static fromJch(j, c, h) {
-        return CAM16.fromJchInViewingConditions(j, c, h, ViewingConditions.DEFAULT);
+        return Cam16.fromJchInViewingConditions(j, c, h, ViewingConditions.DEFAULT);
     }
     /**
      * @param j CAM16 lightness
@@ -173,7 +173,7 @@ export class CAM16 {
         const mstar = (1.0 / 0.0228) * Math.log(1.0 + 0.0228 * m);
         const astar = mstar * Math.cos(hueRadians);
         const bstar = mstar * Math.sin(hueRadians);
-        return new CAM16(h, c, j, q, m, s, jstar, astar, bstar);
+        return new Cam16(h, c, j, q, m, s, jstar, astar, bstar);
     }
     /**
      * @param jstar CAM16-UCS lightness.
@@ -183,7 +183,7 @@ export class CAM16 {
      *     coordinate on the X axis.
      */
     static fromUcs(jstar, astar, bstar) {
-        return CAM16.fromUcsInViewingConditions(jstar, astar, bstar, ViewingConditions.DEFAULT);
+        return Cam16.fromUcsInViewingConditions(jstar, astar, bstar, ViewingConditions.DEFAULT);
     }
     /**
      * @param jstar CAM16-UCS lightness.
@@ -205,14 +205,14 @@ export class CAM16 {
             h += 360.0;
         }
         const j = jstar / (1 - (jstar - 100) * 0.007);
-        return CAM16.fromJchInViewingConditions(j, c, h, viewingConditions);
+        return Cam16.fromJchInViewingConditions(j, c, h, viewingConditions);
     }
     /**
      *  @return ARGB representation of color, assuming the color was viewed in
      *     default viewing conditions, which are near-identical to the default
      *     viewing conditions for sRGB.
      */
-    viewedInSrgb() {
+    toInt() {
         return this.viewed(ViewingConditions.DEFAULT);
     }
     /**
