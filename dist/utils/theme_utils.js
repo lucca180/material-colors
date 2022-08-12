@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Blend } from '../blend/blend';
-import { CorePalette } from '../palettes/core_palette';
-import { Scheme } from '../scheme/scheme';
-import { sourceColorFromImage } from './image_utils';
-import { hexFromArgb } from './string_utils';
+import { Blend } from '../blend/blend.js';
+import { CorePalette } from '../palettes/core_palette.js';
+import { Scheme } from '../scheme/scheme.js';
+import { sourceColorFromImage } from './image_utils.js';
+import { hexFromArgb } from './string_utils.js';
 /**
  * Generate a theme from a source color
  *

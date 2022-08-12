@@ -29,9 +29,9 @@
  * calculate. A difference of 40 in HCT tone guarantees a contrast ratio >= 3.0,
  * and a difference of 50 guarantees a contrast ratio >= 4.5.
  */
-import * as utils from '../utils/color_utils';
-import { Cam16 } from './cam16';
-import { HctSolver } from './hct_solver';
+import * as utils from '../utils/color_utils.js';
+import { Cam16 } from './cam16.js';
+import { HctSolver } from './hct_solver.js';
 /**
  * HCT, hue, chroma, and tone. A color system that provides a perceptually
  * accurate color measurement system that can also accurately render what colors

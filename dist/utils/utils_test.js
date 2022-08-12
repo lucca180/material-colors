@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 import 'jasmine';
-import * as mathUtils from './math_utils';
+import * as mathUtils from './math_utils.js';
 function rotationDirection(from, to) {
     const a = to - from;
     const b = to - from + 360.0;
