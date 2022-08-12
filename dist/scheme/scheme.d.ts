@@ -43,7 +43,9 @@ export declare class Scheme {
     get surfaceVariant(): number;
     get onSurfaceVariant(): number;
     get outline(): number;
+    get outlineVariant(): number;
     get shadow(): number;
+    get scrim(): number;
     get inverseSurface(): number;
     get inverseOnSurface(): number;
     get inversePrimary(): number;
@@ -100,7 +102,9 @@ export declare class Scheme {
         surfaceVariant: number;
         onSurfaceVariant: number;
         outline: number;
+        outlineVariant: number;
         shadow: number;
+        scrim: number;
         inverseSurface: number;
         inverseOnSurface: number;
         inversePrimary: number;

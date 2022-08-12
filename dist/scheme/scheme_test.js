@@ -71,7 +71,9 @@ describe('scheme', () => {
         expect(scheme.surfaceVariant).matchesColor(0xffeedee7);
         expect(scheme.onSurfaceVariant).matchesColor(0xff4e444b);
         expect(scheme.outline).matchesColor(0xff80747b);
+        expect(scheme.outlineVariant).matchesColor(0xffd2c2cb);
         expect(scheme.shadow).matchesColor(0xff000000);
+        expect(scheme.scrim).matchesColor(0xff000000);
         expect(scheme.inverseSurface).matchesColor(0xff342f32);
         expect(scheme.inverseOnSurface).matchesColor(0xfff8eef2);
         expect(scheme.inversePrimary).matchesColor(0xffffabee);
@@ -101,7 +103,9 @@ describe('scheme', () => {
         expect(scheme.surfaceVariant).matchesColor(0xff4e444b);
         expect(scheme.onSurfaceVariant).matchesColor(0xffd2c2cb);
         expect(scheme.outline).matchesColor(0xff9a8d95);
+        expect(scheme.outlineVariant).matchesColor(0xff4e444b);
         expect(scheme.shadow).matchesColor(0xff000000);
+        expect(scheme.scrim).matchesColor(0xff000000);
         expect(scheme.inverseSurface).matchesColor(0xffeae0e4);
         expect(scheme.inverseOnSurface).matchesColor(0xff342f32);
         expect(scheme.inversePrimary).matchesColor(0xffab00a2);
@@ -131,7 +135,9 @@ describe('scheme', () => {
         expect(scheme.surfaceVariant).matchesColor(0xffeedee7);
         expect(scheme.onSurfaceVariant).matchesColor(0xff4e444b);
         expect(scheme.outline).matchesColor(0xff80747b);
+        expect(scheme.outlineVariant).matchesColor(0xffd2c2cb);
         expect(scheme.shadow).matchesColor(0xff000000);
+        expect(scheme.scrim).matchesColor(0xff000000);
         expect(scheme.inverseSurface).matchesColor(0xff342f32);
         expect(scheme.inverseOnSurface).matchesColor(0xfff8eef2);
         expect(scheme.inversePrimary).matchesColor(0xffffabee);
@@ -161,7 +167,9 @@ describe('scheme', () => {
         expect(scheme.surfaceVariant).matchesColor(0xff4e444b);
         expect(scheme.onSurfaceVariant).matchesColor(0xffd2c2cb);
         expect(scheme.outline).matchesColor(0xff9a8d95);
+        expect(scheme.outlineVariant).matchesColor(0xff4e444b);
         expect(scheme.shadow).matchesColor(0xff000000);
+        expect(scheme.scrim).matchesColor(0xff000000);
         expect(scheme.inverseSurface).matchesColor(0xffeae0e4);
         expect(scheme.inverseOnSurface).matchesColor(0xff342f32);
         expect(scheme.inversePrimary).matchesColor(0xffab00a2);

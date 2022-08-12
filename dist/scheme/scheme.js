@@ -92,8 +92,14 @@ export class Scheme {
     get outline() {
         return this.props.outline;
     }
+    get outlineVariant() {
+        return this.props.outlineVariant;
+    }
     get shadow() {
         return this.props.shadow;
+    }
+    get scrim() {
+        return this.props.scrim;
     }
     get inverseSurface() {
         return this.props.inverseSurface;
@@ -160,7 +166,9 @@ export class Scheme {
             surfaceVariant: core.n2.tone(90),
             onSurfaceVariant: core.n2.tone(30),
             outline: core.n2.tone(50),
+            outlineVariant: core.n2.tone(80),
             shadow: core.n1.tone(0),
+            scrim: core.n1.tone(0),
             inverseSurface: core.n1.tone(20),
             inverseOnSurface: core.n1.tone(95),
             inversePrimary: core.a1.tone(80)
@@ -194,7 +202,9 @@ export class Scheme {
             surfaceVariant: core.n2.tone(30),
             onSurfaceVariant: core.n2.tone(80),
             outline: core.n2.tone(60),
+            outlineVariant: core.n2.tone(30),
             shadow: core.n1.tone(0),
+            scrim: core.n1.tone(0),
             inverseSurface: core.n1.tone(90),
             inverseOnSurface: core.n1.tone(20),
             inversePrimary: core.a1.tone(40)
